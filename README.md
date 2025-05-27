@@ -1,6 +1,6 @@
-# Dy Minea Portfolio
+# My Portfolio
 
-A modern, responsive portfolio website showcasing the work, skills, and experience of Dy Minea, a software engineer with 20 years of experience.
+A modern, responsive portfolio website showcasing my work, skills, and experience as a Web Developer.
 
 ## 🚀 Features
 
