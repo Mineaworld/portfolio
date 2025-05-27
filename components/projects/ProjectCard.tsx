@@ -11,7 +11,7 @@ import gsap from "gsap"
 
 interface ProjectCardProps {
   project: Project
-  onClick: () => void
+  onClick?: () => void
 }
 
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {

@@ -223,13 +223,18 @@ export const projects: Project[] = [
   {
     id: "tradekaizen",
     title: "TradeKaizen",
-    description: "A next-generation trading and analytics platform empowering users with real-time market insights and portfolio management. TradeKaizen delivers a seamless, data-driven experience for traders of all levels, featuring dynamic dashboards, secure authentication, and responsive design.",
+    description: "A modern trading journal and analytics platform built with Next.js 14, empowering traders with real-time insights, performance analytics, and a seamless user experience.",
     image: "/projects/TradeKaizen.png",
-    demoUrl: "",
+    demoUrl: "", // No public demo link in the repo
     repoUrl: "https://github.com/Mineaworld/TradeKaizen",
-    techStack: ["React", "Node.js", "Tailwind CSS"],
-    problem: "Traders and investors need real-time, actionable insights and a reliable platform to manage portfolios efficiently.",
-    solution: "Developed a robust, user-centric platform with real-time data visualization, secure user management, and responsive dashboards for optimal trading experiences."
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+    ],
+    problem: "Traders need a reliable, real-time platform to track trades, analyze performance, and continuously improve their strategies. Existing solutions often lack modern UX, real-time data, and actionable analytics.",
+    solution: "Developed a robust, user-centric platform with real-time data via Supabase, interactive charts, drag-and-drop strategy management, secure authentication, and a beautiful, responsive UI. Features include a trading dashboard, journal, analytics, calendar, and resources, all designed for continuous improvement and efficiency."
   },
   {
     id: "zentry-clone",
@@ -238,7 +243,7 @@ export const projects: Project[] = [
     image: "/projects/Zentry.png",
     demoUrl: "https://zentry-clone-awwards.vercel.app/",
     repoUrl: "https://github.com/Mineaworld/Zentry-Clone",
-    techStack: ["React", "JavaScript"],
+    techStack: ["React.js", "Javascript", "Tailwind CSS", "GSAP"],
     problem: "Modern platforms require secure authentication and seamless user experiences across devices.",
     solution: "Engineered a scalable architecture with robust authentication flows and a clean, intuitive design, ensuring both security and usability."
   },
@@ -249,7 +254,7 @@ export const projects: Project[] = [
     image: "/projects/Banking.png",
     demoUrl: "https://banking-modern-ui.vercel.app/",
     repoUrl: "https://github.com/Mineaworld/Banking-React-Tailwind-UI",
-    techStack: ["React", "Tailwind CSS"],
+    techStack: ["React.js", "Javascript", "Tailwind CSS"],
     problem: "Banking users expect intuitive dashboards and secure, real-time access to their financial data.",
     solution: "Designed and implemented a responsive, visually engaging dashboard with robust security and real-time data visualization."
   },
@@ -260,7 +265,7 @@ export const projects: Project[] = [
     image: "/projects/Inventory.png",
     demoUrl: "",
     repoUrl: "https://github.com/Mineaworld/Inventory-Management",
-    techStack: ["JavaScript", "Node.js"],
+    techStack: ["Laravel", "React.js", "MySQL"],
     problem: "Businesses need efficient tools to track inventory, analyze stock levels, and manage user permissions.",
     solution: "Built a user-friendly system with powerful analytics, role-based access, and seamless CRUD operations for streamlined inventory control."
   }
