@@ -135,7 +135,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover transition-transform duration-300"
+          className="object-fill transition-transform duration-300 "
         />
       </div>
       <CardHeader>
