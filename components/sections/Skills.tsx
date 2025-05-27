@@ -131,7 +131,7 @@ export function Skills() {
                   <Card className="overflow-hidden transition-all duration-300 bg-card/50 backdrop-blur-sm cursor-pointer">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-lg flex items-center justify-between gap-2">
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-3 h-10">
                           <div className={getIconContainerClass(skill.name)}>
                             <img
                               src={skill.icon}
@@ -142,7 +142,7 @@ export function Skills() {
                               onError={handleImgError}
                             />
                           </div>
-                          <span className="font-medium">{skill.name}</span>
+                          <span className="font-medium flex items-center h-10">{skill.name}</span>
                         </div>
                         <span className={`text-sm font-medium px-2 py-1 rounded-full ${
                           skill.proficiency === 'Advanced' 

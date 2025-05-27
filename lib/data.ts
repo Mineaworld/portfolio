@@ -56,6 +56,13 @@ export const skills: Skill[] = [
     proficiency: "Proficient"
   },
   { 
+    name: "TypeScript", 
+    level: 75, 
+    category: "frontend",
+    icon: "/skills/Typescript.svg",
+    proficiency: "Intermediate"
+},
+  { 
     name: "React", 
     level: 70, 
     category: "frontend",
