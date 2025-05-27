@@ -160,19 +160,20 @@ export function About() {
             ref={el => paragraphsRef.current[0] = el!}
             className="text-lg text-muted-foreground leading-relaxed cursor-pointer"
           >
-            I&apos;m <span className="font-semibold">Dy Minea</span>, a passionate Web Developer dedicated to building beautiful, high-performance web applications that make a difference. With a strong foundation in JavaScript, React, and modern UI/UX principles, I thrive on transforming complex ideas into seamless digital experiences. My approach blends technical excellence with a deep understanding of user needs, ensuring every project is both robust and intuitive.
+            Hey, I&apos;m <span className="font-semibold">Dy Minea</span> – a web developer who loves turning ideas into sleek, responsive websites. With tech skills from React, Tailwind, PHP, Next.js, and SQL, I create clean and user-friendly web applications that solve real-world problems. I&apos;m always exploring new tech and AI-driven solutions to stay ahead of the curve.
           </p>
           <p 
             ref={el => paragraphsRef.current[1] = el!}
             className="text-lg text-muted-foreground leading-relaxed cursor-pointer"
           >
-            Driven by curiosity and a love for learning, I stay at the forefront of web technology, always seeking new ways to deliver value—whether through open-source contributions, team collaboration, or independent innovation.
+            When I&apos;m not coding, you&apos;ll find me working on side projects, staying fit, or learning something new. 
+            
           </p>
           <p 
             ref={el => paragraphsRef.current[2] = el!}
             className="text-lg text-muted-foreground leading-relaxed"
           >
-            <span className="italic"></span>
+            <span className="italic">Let&apos;s connect and build something amazing!</span>
           </p>
         </div>
       </div>

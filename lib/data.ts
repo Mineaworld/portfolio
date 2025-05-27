@@ -43,7 +43,7 @@ export const skills: Skill[] = [
   // Frontend Development
   { 
     name: "HTML/CSS", 
-    level: 80, 
+    level: 89, 
     category: "frontend",
     icon: "/skills/htmlcss.svg",
     proficiency: "Advanced"
@@ -60,18 +60,18 @@ export const skills: Skill[] = [
     level: 70, 
     category: "frontend",
     icon: "/skills/react.svg",
-    proficiency: "Proficient"
+    proficiency: "Intermediate"
   },
   { 
     name: "NextJS", 
-    level: 65, 
+    level: 60, 
     category: "frontend",
     icon: "/skills/nextjs.svg",
     proficiency: "Intermediate"
   },
   { 
     name: "Tailwind", 
-    level: 75, 
+    level: 70, 
     category: "frontend",
     icon: "/skills/Tailwind.svg",
     proficiency: "Proficient"
@@ -87,7 +87,7 @@ export const skills: Skill[] = [
   // Backend & Databases
   { 
     name: "PHP", 
-    level: 65, 
+    level: 50, 
     category: "backend",
     icon: "/skills/php.svg",
     proficiency: "Intermediate"
@@ -101,7 +101,7 @@ export const skills: Skill[] = [
   },
   { 
     name: "MySQL", 
-    level: 65, 
+    level: 60, 
     category: "backend",
     icon: "/skills/mysql.svg",
     proficiency: "Intermediate"
@@ -131,14 +131,14 @@ export const skills: Skill[] = [
   },
   { 
     name: "VS Code", 
-    level: 80, 
+    level: 90, 
     category: "tools",
     icon: "/skills/vscode.svg",
     proficiency: "Advanced"
   },
   { 
     name: "Cursor", 
-    level: 70, 
+    level: 80, 
     category: "tools",
     icon: "/skills/Cursor.svg",
     proficiency: "Proficient"
@@ -148,51 +148,51 @@ export const skills: Skill[] = [
     level: 70, 
     category: "tools",
     icon: "/skills/vercel.svg",
-    proficiency: "Proficient"
+    proficiency: "Intermediate"
   },
   { 
     name: "Trello", 
-    level: 75, 
+    level: 70, 
     category: "tools",
     icon: "/skills/trello.svg",
-    proficiency: "Proficient"
+    proficiency: "Intermediate"
   },
   
   // CMS & Design
   { 
     name: "WordPress", 
-    level: 70, 
+    level: 80, 
     category: "other",
     icon: "/skills/wordpress.svg",
     proficiency: "Proficient"
   },
   { 
     name: "Joomla", 
-    level: 65, 
+    level: 60, 
     category: "other",
     icon: "/skills/joomla.svg",
     proficiency: "Intermediate"
   },
   { 
     name: "Canva", 
-    level: 75, 
+    level: 85, 
     category: "other",
     icon: "/skills/canva.svg",
-    proficiency: "Proficient"
+    proficiency: "Advanced"
   },
   { 
     name: "Adobe Creative Suite", 
-    level: 65, 
+    level: 75, 
     category: "other",
     icon: "/skills/adobe.svg",
-    proficiency: "Intermediate"
+    proficiency: "Proficient"
   },
   { 
     name: "Microsoft Office", 
     level: 80, 
     category: "other",
     icon: "/skills/office.svg",
-    proficiency: "Advanced"
+    proficiency: "Proficient"
   },
   
   // Programming Languages
@@ -201,7 +201,7 @@ export const skills: Skill[] = [
     level: 70, 
     category: "other",
     icon: "/skills/cpp.svg",
-    proficiency: "Proficient"
+    proficiency: "Intermediate"
   },
   { 
     name: "C#", 
@@ -258,7 +258,7 @@ export const projects: Project[] = [
     title: "Inventory-Management",
     description: "A comprehensive inventory management system supporting CRUD operations, analytics, and user roles.",
     image: "/projects/Inventory.png",
-    demoUrl: "https://github.com/Mineaworld/Inventory-Management",
+    demoUrl: "",
     repoUrl: "https://github.com/Mineaworld/Inventory-Management",
     techStack: ["JavaScript", "Node.js"],
     problem: "Businesses need efficient tools to track inventory, analyze stock levels, and manage user permissions.",
