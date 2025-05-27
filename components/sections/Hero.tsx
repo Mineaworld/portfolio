@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Download } from "lucide-react"
+import { Download } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { socialLinks } from "@/lib/data"
+import { SocialIcons } from "@/components/ui/social-icons"
 
 export function Hero() {
   const [isVisible, setIsVisible] = useState(false)
@@ -54,25 +54,8 @@ export function Hero() {
               </Button>
             </div>
             
-            <div className="pt-8 flex items-center gap-6">
-              <a 
-                href={socialLinks.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="GitHub Profile"
-              >
-                <Github className="h-7 w-7" />
-              </a>
-              <a 
-                href={socialLinks.linkedin}
-                target="_blank"
-                rel="noopener noreferrer" 
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="LinkedIn Profile"
-              >
-                <Linkedin className="h-7 w-7" />
-              </a>
+            <div className="pt-8">
+              <SocialIcons />
             </div>
           </div>
           

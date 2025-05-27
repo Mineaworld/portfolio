@@ -3,12 +3,16 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { skills, skillCategories } from "@/lib/data"
+import Image from "next/image"
+import { useTheme } from "next-themes"
+
+const fallbackIcon = "/skills/fallback.svg";
 
 export function Skills() {
   const [selectedCategory, setSelectedCategory] = useState("all")
+  const { theme } = useTheme()
   
   const filteredSkills = selectedCategory === "all" 
     ? skills 
@@ -31,6 +35,21 @@ export function Skills() {
       opacity: 1,
       transition: { duration: 0.5 }
     }
+  }
+
+  const handleImgError = (e: any) => {
+    e.target.src = fallbackIcon;
+  }
+
+  const getIconContainerClass = (skillName: string) => {
+    const baseClass = "w-10 h-10 flex items-center justify-center rounded shadow-sm";
+    const isDarkMode = theme === 'dark';
+    
+    if (isDarkMode && ['Vercel', 'Cursor', 'Git/GitHub'].includes(skillName)) {
+      return `${baseClass} bg-white border border-border`;
+    }
+    
+    return `${baseClass} bg-background/80`;
   }
 
   return (
@@ -67,26 +86,37 @@ export function Skills() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
             >
-              {filteredSkills.map((skill, index) => (
+              {filteredSkills.map((skill) => (
                 <motion.div key={skill.name} variants={itemVariants}>
-                  <Card className="overflow-hidden hover:shadow-md transition-shadow">
+                  <Card className="overflow-hidden hover:shadow-md transition-shadow bg-card/50 backdrop-blur-sm">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-lg flex items-center justify-between gap-2">
-                        {/* Placeholder for skill icon */}
-                        {/* <SkillIcon name={skill.name} /> */}
-                        <span>{skill.name}</span>
-                        <span className="text-sm font-normal text-muted-foreground">
-                          {skill.level}%
+                        <div className="flex items-center gap-3">
+                          <div className={getIconContainerClass(skill.name)}>
+                            <img
+                              src={skill.icon}
+                              alt={skill.name}
+                              width={32}
+                              height={32}
+                              style={{ objectFit: 'contain', maxWidth: 32, maxHeight: 32 }}
+                              onError={handleImgError}
+                            />
+                          </div>
+                          <span className="font-medium">{skill.name}</span>
+                        </div>
+                        <span className={`text-sm font-medium px-2 py-1 rounded-full ${
+                          skill.proficiency === 'Advanced' 
+                            ? 'bg-green-500/10 text-green-500 dark:text-green-400'
+                            : skill.proficiency === 'Proficient'
+                            ? 'bg-blue-500/10 text-blue-500 dark:text-blue-400'
+                            : skill.proficiency === 'Intermediate'
+                            ? 'bg-yellow-500/10 text-yellow-500 dark:text-yellow-400'
+                            : 'bg-orange-500/10 text-orange-500 dark:text-orange-400'
+                        }`}>
+                          {skill.proficiency}
                         </span>
                       </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <Progress 
-                        value={skill.level} 
-                        className="h-2"
-                        indicatorClassName="bg-gradient-to-r from-primary to-secondary transition-all duration-700"
-                      />
-                    </CardContent>
                   </Card>
                 </motion.div>
               ))}

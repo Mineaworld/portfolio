@@ -4,6 +4,9 @@ export type Skill = {
   name: string
   level: number // 0-100
   category: 'frontend' | 'backend' | 'tools' | 'other'
+  icon: string // Path to the icon
+  proficiency: 'Advanced' | 'Proficient' | 'Intermediate' | 'Familiar'
+  isComponentIcon?: boolean
 }
 
 export type Project = {
@@ -29,20 +32,176 @@ export type Experience = {
 }
 
 export const skills: Skill[] = [
-  { name: "JavaScript", level: 95, category: "frontend" },
-  { name: "React", level: 90, category: "frontend" },
-  { name: "NextJS", level: 85, category: "frontend" },
-  { name: "TypeScript", level: 80, category: "frontend" },
-  { name: "Tailwind CSS", level: 90, category: "frontend" },
-  { name: "HTML/CSS", level: 95, category: "frontend" },
-  { name: "Node.js", level: 75, category: "backend" },
-  { name: "Express", level: 70, category: "backend" },
-  { name: "Supabase", level: 80, category: "backend" },
-  { name: "PostgreSQL", level: 65, category: "backend" },
-  { name: "Git", level: 85, category: "tools" },
-  { name: "Docker", level: 60, category: "tools" },
-  { name: "Figma", level: 75, category: "tools" },
-  { name: "Jest", level: 70, category: "tools" },
+  // Frontend Development
+  { 
+    name: "HTML/CSS", 
+    level: 80, 
+    category: "frontend",
+    icon: "/skills/htmlcss.svg",
+    proficiency: "Advanced"
+  },
+  { 
+    name: "JavaScript", 
+    level: 75, 
+    category: "frontend",
+    icon: "/skills/javascript.svg",
+    proficiency: "Proficient"
+  },
+  { 
+    name: "React", 
+    level: 70, 
+    category: "frontend",
+    icon: "/skills/react.svg",
+    proficiency: "Proficient"
+  },
+  { 
+    name: "NextJS", 
+    level: 65, 
+    category: "frontend",
+    icon: "/skills/nextjs.svg",
+    proficiency: "Intermediate"
+  },
+  { 
+    name: "Tailwind", 
+    level: 75, 
+    category: "frontend",
+    icon: "/skills/Tailwind.svg",
+    proficiency: "Proficient"
+  },
+  { 
+    name: "GSAP", 
+    level: 60, 
+    category: "frontend",
+    icon: "/skills/gsap.svg",
+    proficiency: "Intermediate"
+  },
+  
+  // Backend & Databases
+  { 
+    name: "PHP", 
+    level: 65, 
+    category: "backend",
+    icon: "/skills/php.svg",
+    proficiency: "Intermediate"
+  },
+  { 
+    name: "SQL", 
+    level: 70, 
+    category: "backend",
+    icon: "/skills/sql.svg",
+    proficiency: "Proficient"
+  },
+  { 
+    name: "MySQL", 
+    level: 65, 
+    category: "backend",
+    icon: "/skills/mysql.svg",
+    proficiency: "Intermediate"
+  },
+  { 
+    name: "SQL Server", 
+    level: 60, 
+    category: "backend",
+    icon: "/skills/sqlserver.svg",
+    proficiency: "Intermediate"
+  },
+  { 
+    name: "Supabase", 
+    level: 65, 
+    category: "backend",
+    icon: "/skills/supabase.svg",
+    proficiency: "Intermediate"
+  },
+  
+  // Development Tools
+  { 
+    name: "Git/GitHub", 
+    level: 75, 
+    category: "tools",
+    icon: "/skills/github.svg",
+    proficiency: "Proficient"
+  },
+  { 
+    name: "VS Code", 
+    level: 80, 
+    category: "tools",
+    icon: "/skills/vscode.svg",
+    proficiency: "Advanced"
+  },
+  { 
+    name: "Cursor", 
+    level: 70, 
+    category: "tools",
+    icon: "/skills/Cursor.svg",
+    proficiency: "Proficient"
+  },
+  { 
+    name: "Vercel", 
+    level: 70, 
+    category: "tools",
+    icon: "/skills/vercel.svg",
+    proficiency: "Proficient"
+  },
+  { 
+    name: "Trello", 
+    level: 75, 
+    category: "tools",
+    icon: "/skills/trello.svg",
+    proficiency: "Proficient"
+  },
+  
+  // CMS & Design
+  { 
+    name: "WordPress", 
+    level: 70, 
+    category: "other",
+    icon: "/skills/wordpress.svg",
+    proficiency: "Proficient"
+  },
+  { 
+    name: "Joomla", 
+    level: 65, 
+    category: "other",
+    icon: "/skills/joomla.svg",
+    proficiency: "Intermediate"
+  },
+  { 
+    name: "Canva", 
+    level: 75, 
+    category: "other",
+    icon: "/skills/canva.svg",
+    proficiency: "Proficient"
+  },
+  { 
+    name: "Adobe Creative Suite", 
+    level: 65, 
+    category: "other",
+    icon: "/skills/adobe.svg",
+    proficiency: "Intermediate"
+  },
+  { 
+    name: "Microsoft Office", 
+    level: 80, 
+    category: "other",
+    icon: "/skills/office.svg",
+    proficiency: "Advanced"
+  },
+  
+  // Programming Languages
+  { 
+    name: "C++", 
+    level: 70, 
+    category: "other",
+    icon: "/skills/cpp.svg",
+    proficiency: "Proficient"
+  },
+  { 
+    name: "C#", 
+    level: 65, 
+    category: "other",
+    icon: "/skills/csharp.svg",
+    proficiency: "Intermediate"
+  }
 ]
 
 export const skillCategories = [

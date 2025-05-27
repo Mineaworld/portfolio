@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Github, Linkedin, Mail } from "lucide-react"
+import { Mail } from "lucide-react"
+import { SocialIcons } from "@/components/ui/social-icons"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -13,25 +14,8 @@ export function Footer() {
             <p className="text-muted-foreground">Web Developer</p>
           </div>
           
-          <div className="flex space-x-4">
-            <Link 
-              href="https://github.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="GitHub"
-            >
-              <Github className="h-5 w-5" />
-            </Link>
-            <Link 
-              href="https://linkedin.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-5 w-5" />
-            </Link>
+          <div className="flex items-center gap-4">
+            <SocialIcons iconSize={5} />
             <Link 
               href="mailto:contact@dyminea.com" 
               className="text-muted-foreground hover:text-foreground transition-colors"
