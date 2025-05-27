@@ -14,19 +14,21 @@ export function About() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     
-    // Image animation
+    // Image animation with enhanced effects
     gsap.fromTo(
       imageRef.current,
       {
         scale: 0.8,
         opacity: 0,
         rotation: -5,
+        y: 50,
       },
       {
         scale: 1,
         opacity: 1,
         rotation: 0,
-        duration: 1,
+        y: 0,
+        duration: 1.2,
         ease: "back.out(1.7)",
         scrollTrigger: {
           trigger: imageRef.current,
@@ -36,7 +38,28 @@ export function About() {
       }
     );
 
-    // Title animation
+    // Add hover animation to image
+    if (imageRef.current) {
+      imageRef.current.addEventListener("mouseenter", () => {
+        gsap.to(imageRef.current, {
+          scale: 1.05,
+          rotation: 2,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+
+      imageRef.current.addEventListener("mouseleave", () => {
+        gsap.to(imageRef.current, {
+          scale: 1,
+          rotation: 0,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+    }
+
+    // Title animation with enhanced effects
     const titleElement = contentRef.current?.querySelector("h2");
     if (titleElement) {
       gsap.fromTo(
@@ -44,10 +67,12 @@ export function About() {
         {
           y: 50,
           opacity: 0,
+          scale: 0.9,
         },
         {
           y: 0,
           opacity: 1,
+          scale: 1,
           duration: 0.8,
           ease: "power3.out",
           scrollTrigger: {
@@ -59,17 +84,19 @@ export function About() {
       );
     }
 
-    // Paragraphs animation
+    // Enhanced paragraphs animation
     paragraphsRef.current.forEach((paragraph, index) => {
       gsap.fromTo(
         paragraph,
         {
           y: 30,
           opacity: 0,
+          scale: 0.95,
         },
         {
           y: 0,
           opacity: 1,
+          scale: 1,
           duration: 0.8,
           delay: index * 0.2,
           ease: "power3.out",
@@ -80,18 +107,43 @@ export function About() {
           }
         }
       );
+
+      // Add hover animation to paragraphs
+      paragraph.addEventListener("mouseenter", () => {
+        gsap.to(paragraph, {
+          scale: 1.02,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+
+      paragraph.addEventListener("mouseleave", () => {
+        gsap.to(paragraph, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
     });
 
     // Cleanup
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      if (imageRef.current) {
+        imageRef.current.removeEventListener("mouseenter", () => {});
+        imageRef.current.removeEventListener("mouseleave", () => {});
+      }
+      paragraphsRef.current.forEach(paragraph => {
+        paragraph.removeEventListener("mouseenter", () => {});
+        paragraph.removeEventListener("mouseleave", () => {});
+      });
     };
   }, []);
 
   return (
     <section ref={sectionRef} id="about" className="py-16 md:py-24 bg-muted/30">
-      <div className="container mx-auto px-6 sm:px-20 lg:px-30 max-w-[900px] flex flex-col md:flex-row items-center gap-10">
-        <div ref={imageRef} className="flex-shrink-0">
+      <div className="container mx-auto px-6 sm:px-20 lg:px-30 max-w-[900px] flex flex-col md:flex-row items-center gap-16">
+        <div ref={imageRef} className="flex-shrink-0 cursor-pointer">
           <div className="relative w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-primary/10 shadow-lg">
             <Image
               src="/images/Minea.png"
@@ -102,17 +154,17 @@ export function About() {
             />
           </div>
         </div>
-        <div ref={contentRef} className="flex-1 space-y-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">About Me</h2>
+        <div ref={contentRef} className="flex-1 space-y-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">About Me</h2>
           <p 
             ref={el => paragraphsRef.current[0] = el!}
-            className="text-lg text-muted-foreground leading-relaxed"
+            className="text-lg text-muted-foreground leading-relaxed cursor-pointer"
           >
-            I&apos;m <span className="font-semibold">Dy Minea</span>, a passionate full stack developer dedicated to building beautiful, high-performance web applications that make a difference. With a strong foundation in JavaScript, React, and modern UI/UX principles, I thrive on transforming complex ideas into seamless digital experiences. My approach blends technical excellence with a deep understanding of user needs, ensuring every project is both robust and intuitive.
+            I&apos;m <span className="font-semibold">Dy Minea</span>, a passionate Web Developer dedicated to building beautiful, high-performance web applications that make a difference. With a strong foundation in JavaScript, React, and modern UI/UX principles, I thrive on transforming complex ideas into seamless digital experiences. My approach blends technical excellence with a deep understanding of user needs, ensuring every project is both robust and intuitive.
           </p>
           <p 
             ref={el => paragraphsRef.current[1] = el!}
-            className="text-lg text-muted-foreground leading-relaxed"
+            className="text-lg text-muted-foreground leading-relaxed cursor-pointer"
           >
             Driven by curiosity and a love for learning, I stay at the forefront of web technology, always seeking new ways to deliver value—whether through open-source contributions, team collaboration, or independent innovation.
           </p>
@@ -120,7 +172,7 @@ export function About() {
             ref={el => paragraphsRef.current[2] = el!}
             className="text-lg text-muted-foreground leading-relaxed"
           >
-            <span className="italic">(This is placeholder text. Update with your real story soon!)</span>
+            <span className="italic"></span>
           </p>
         </div>
       </div>

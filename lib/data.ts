@@ -14,6 +14,7 @@ export type Project = {
   title: string
   description: string
   image: string
+  iframeUrl?: string
   demoUrl: string
   repoUrl: string
   techStack: string[]
@@ -216,7 +217,7 @@ export const projects: Project[] = [
     id: "tradekaizen",
     title: "TradeKaizen",
     description: "A next-generation trading and analytics platform empowering users with real-time market insights and portfolio management. TradeKaizen delivers a seamless, data-driven experience for traders of all levels, featuring dynamic dashboards, secure authentication, and responsive design.",
-    image: "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "/projects/tradekaizen-home.png",
     demoUrl: "https://tradekaizen-demo.com",
     repoUrl: "https://github.com/Mineaworld/TradeKaizen",
     techStack: ["React", "Node.js", "Tailwind CSS"],
@@ -227,7 +228,8 @@ export const projects: Project[] = [
     id: "zentry-clone",
     title: "Zentry-Clone",
     description: "A polished, full-featured clone of the Zentry platform, showcasing advanced authentication, state management, and a modern, responsive UI.",
-    image: "https://images.pexels.com/photos/5076516/pexels-photo-5076516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "/projects/zentry-clone.png",
+    iframeUrl: "https://zentry-clone-awwards.vercel.app/",
     demoUrl: "https://zentry-clone-demo.com",
     repoUrl: "https://github.com/Mineaworld/Zentry-Clone",
     techStack: ["React", "JavaScript"],
@@ -264,10 +266,10 @@ export const experiences: Experience[] = [
     position: "Web Development Student",
     company: "Self-Taught / Online Courses",
     location: "Remote",
-    startDate: "2021",
-    endDate: "2023",
+    startDate: "2023",
+    endDate: "Present",
     achievements: [
-      "Completed comprehensive coursework in JavaScript, React, and full-stack development.",
+      "Completed comprehensive coursework in Web Development.",
       "Built and deployed several portfolio projects to demonstrate practical skills.",
       "Continuously learning and applying new technologies in personal projects."
     ]
@@ -278,12 +280,5 @@ export const socialLinks = {
   github: "https://github.com/Mineaworld",
   linkedin: "https://linkedin.com/in/mineadev",
   twitter: "https://twitter.com/Minea_Blue",
-  email: "your@email.com"
-}
-
-export const portfolioStats = {
-  projectsCompleted: 8,
-  yearsOfExperience: 2,
-  happyClients: 3,
-  codingHours: 2000
+  email: "minea.dyy@gmail.com"
 }

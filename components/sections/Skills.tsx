@@ -1,18 +1,20 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { skills, skillCategories } from "@/lib/data"
 import Image from "next/image"
 import { useTheme } from "next-themes"
+import gsap from "gsap"
 
 const fallbackIcon = "/skills/fallback.svg";
 
 export function Skills() {
   const [selectedCategory, setSelectedCategory] = useState("all")
   const { theme } = useTheme()
+  const skillCardsRef = useRef<(HTMLDivElement | null)[]>([])
   
   const filteredSkills = selectedCategory === "all" 
     ? skills 
@@ -45,12 +47,46 @@ export function Skills() {
     const baseClass = "w-10 h-10 flex items-center justify-center rounded shadow-sm";
     const isDarkMode = theme === 'dark';
     
-    if (isDarkMode && ['Vercel', 'Cursor', 'Git/GitHub'].includes(skillName)) {
-      return `${baseClass} bg-white border border-border`;
+    if (isDarkMode && ['Vercel', 'Cursor', 'Git/GitHub', 'SQL'].includes(skillName)) {
+      return `${baseClass} bg-white/90 border border-border`;
     }
     
     return `${baseClass} bg-background/80`;
   }
+
+  useEffect(() => {
+    skillCardsRef.current.forEach((card, index) => {
+      if (!card) return;
+
+      const handleMouseEnter = () => {
+        gsap.to(card, {
+          y: -8,
+          scale: 1.02,
+          boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      };
+
+      const handleMouseLeave = () => {
+        gsap.to(card, {
+          y: 0,
+          scale: 1,
+          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      };
+
+      card.addEventListener("mouseenter", handleMouseEnter);
+      card.addEventListener("mouseleave", handleMouseLeave);
+
+      return () => {
+        card.removeEventListener("mouseenter", handleMouseEnter);
+        card.removeEventListener("mouseleave", handleMouseLeave);
+      };
+    });
+  }, [filteredSkills]);
 
   return (
     <section id="skills" className="py-20 bg-muted/30">
@@ -86,9 +122,13 @@ export function Skills() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
             >
-              {filteredSkills.map((skill) => (
-                <motion.div key={skill.name} variants={itemVariants}>
-                  <Card className="overflow-hidden hover:shadow-md transition-shadow bg-card/50 backdrop-blur-sm">
+              {filteredSkills.map((skill, index) => (
+                <motion.div 
+                  key={skill.name} 
+                  variants={itemVariants}
+                  ref={el => skillCardsRef.current[index] = el}
+                >
+                  <Card className="overflow-hidden transition-all duration-300 bg-card/50 backdrop-blur-sm cursor-pointer">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-lg flex items-center justify-between gap-2">
                         <div className="flex items-center gap-3">
