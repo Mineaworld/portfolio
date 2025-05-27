@@ -32,6 +32,13 @@ export type Experience = {
   achievements: string[]
 }
 
+export const portfolioStats = {
+  projectsCompleted: 50,
+  yearsOfExperience: 5,
+  happyClients: 30,
+  codingHours: 10000
+}
+
 export const skills: Skill[] = [
   // Frontend Development
   { 
