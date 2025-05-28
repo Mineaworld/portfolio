@@ -4,6 +4,7 @@ import TechBadge from './TechBadge';
 import { skills } from '@/lib/data';
 import { ExternalLink, Github, X } from 'lucide-react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 
 function getTechIcon(tech: string) {
   const skill = skills.find(s => s.name.toLowerCase().replace(/\W/g, '') === tech.toLowerCase().replace(/\W/g, ''));
@@ -67,11 +68,11 @@ export default function ProjectModal({ open, onClose, project }: ProjectModalPro
                 className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors"
                 aria-label="Close modal"
               >
-                <X className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                <X className="w-5 h-5 text-gray-700 dark:text-gray-300" />
               </button>
               
               <div className="relative h-48 md:h-64">
-                <img 
+                <Image 
                   src={project.image} 
                   alt={project.title} 
                   className="w-full h-full object-cover rounded-t-xl"

@@ -246,29 +246,29 @@ export const projects: Project[] = [
   {
     id: "zentry-clone",
     title: "Zentry-Clone",
-    description: "A polished, full-featured clone of the Zentry platform, showcasing advanced authentication, state management, and a modern, responsive UI.",
+    description: "A polished, full-featured clone of the Zentry platform, showcasing advanced, state management, and a modern, responsive UI.",
     image: "/projects/Zentry.png",
     demoUrl: "https://zentry-clone-awwards.vercel.app/",
     repoUrl: "https://github.com/Mineaworld/Zentry-Clone",
     techStack: ["React.js", "Javascript", "Tailwind CSS", "GSAP"],
-    problem: "Modern platforms require secure authentication and seamless user experiences across devices.",
+    problem: "Modern platforms require a polish UI and seamless user experiences across devices.",
     solution: "Engineered a scalable architecture with robust authentication flows and a clean, intuitive design, ensuring both security and usability."
   },
   {
     id: "banking-react-tailwind-ui",
     title: "Banking-React-Tailwind-UI",
-    description: "A sleek, professional banking dashboard built with React and Tailwind CSS. Features real-time data, secure login, and a seamless user journey.",
+    description: "A sleek, professional banking dashboard built with React and Tailwind CSS. Features real-time data and a seamless user journey.",
     image: "/projects/Banking.png",
     demoUrl: "https://banking-modern-ui.vercel.app/",
     repoUrl: "https://github.com/Mineaworld/Banking-React-Tailwind-UI",
     techStack: ["React.js", "Javascript", "Tailwind CSS"],
-    problem: "Banking users expect intuitive dashboards and secure, real-time access to their financial data.",
+    problem: "Banking users expect modern UX/UI following the responsive design and polish looking",
     solution: "Designed and implemented a responsive, visually engaging dashboard with robust security and real-time data visualization."
   },
   {
     id: "inventory-management",
     title: "Inventory-Management",
-    description: "A comprehensive inventory management system supporting CRUD operations, analytics, and user roles.",
+    description: "A comprehensive inventory management system supporting CRUD operations, analytics, user roles and bilingual supported.",
     image: "/projects/Inventory.png",
     demoUrl: "",
     repoUrl: "https://github.com/Mineaworld/Inventory-Management",
@@ -282,8 +282,8 @@ export const experiences: Experience[] = [
   {
     id: "exp-1",
     position: "Web Development Student",
-    company: "Self-Taught / Online Courses",
-    location: "Remote",
+    company: "Uni Studen / Self-Taught / Online Courses",
+    location: "Remote and Phnom Penh, Cambodia",
     startDate: "2023",
     endDate: "Present",
     achievements: [
