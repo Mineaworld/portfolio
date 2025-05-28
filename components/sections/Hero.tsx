@@ -186,7 +186,7 @@ export function Hero() {
             
             <p ref={descriptionRef} className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
               I create beautiful, functional websites and web applications with a focus on user experience. 
-              Specializing in modern frontend technologies like PHP Laravel, React, Next.js, and Tailwind CSS.
+              Specializing in modern technologies like PHP Laravel, React, Next.js, and Tailwind CSS.
             </p>
             
             <div ref={buttonsRef} className="flex flex-wrap gap-6 pt-4">
