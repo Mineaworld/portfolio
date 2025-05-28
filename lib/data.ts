@@ -298,5 +298,6 @@ export const socialLinks = {
   github: "https://github.com/Mineaworld",
   linkedin: "https://linkedin.com/in/mineadev",
   twitter: "https://twitter.com/Minea_Blue",
-  email: "minea.dyy@gmail.com"
+  email: "minea.dyy@gmail.com",
+  telegram: "https://t.me/ImMinea"
 }

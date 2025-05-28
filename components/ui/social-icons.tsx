@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { Github, Linkedin } from "lucide-react"
+import { Github, Linkedin, Send } from "lucide-react"
 import gsap from "gsap"
 
 interface SocialIconsProps {
@@ -12,9 +12,10 @@ interface SocialIconsProps {
 export function SocialIcons({ className = "", iconSize = 7 }: SocialIconsProps) {
   const githubRef = useRef<HTMLAnchorElement>(null)
   const linkedinRef = useRef<HTMLAnchorElement>(null)
+  const telegramRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
-    const icons = [githubRef.current, linkedinRef.current]
+    const icons = [githubRef.current, linkedinRef.current, telegramRef.current]
     
     icons.forEach((icon) => {
       if (!icon) return
@@ -73,6 +74,16 @@ export function SocialIcons({ className = "", iconSize = 7 }: SocialIconsProps) 
         aria-label="LinkedIn Profile"
       >
         <Linkedin className={`h-${iconSize} w-${iconSize}`} />
+      </a>
+      <a 
+        ref={telegramRef}
+        href="https://t.me/ImMinea"
+        target="_blank"
+        rel="noopener noreferrer" 
+        className="text-muted-foreground transition-colors"
+        aria-label="Telegram Profile"
+      >
+        <Send className={`h-${iconSize} w-${iconSize}`} />
       </a>
     </div>
   )
