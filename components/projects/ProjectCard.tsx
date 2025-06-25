@@ -7,7 +7,7 @@ import { Project } from "@/lib/data"
 import Image from "next/image"
 import { ExternalLink, Github } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import gsap from "gsap"
+import { motion, useMotionValue, useTransform } from "framer-motion"
 
 interface ProjectCardProps {
   project: Project
@@ -15,158 +15,63 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {
+  // 3D Card Effect logic
   const cardRef = useRef<HTMLDivElement>(null)
-  const imageRef = useRef<HTMLDivElement>(null)
-  const titleRef = useRef<HTMLHeadingElement>(null)
-  const descriptionRef = useRef<HTMLParagraphElement>(null)
-  const techRef = useRef<HTMLDivElement>(null)
-  const linksRef = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const rotateX = useTransform(y, [-50, 50], [15, -15])
+  const rotateY = useTransform(x, [-50, 50], [-15, 15])
 
-  useEffect(() => {
-    // Image hover animation
-    if (imageRef.current) {
-      imageRef.current.addEventListener("mouseenter", () => {
-        gsap.to(imageRef.current, {
-          scale: 1.05,
-          duration: 0.3,
-          ease: "power2.out"
-        })
-      })
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    const rect = cardRef.current?.getBoundingClientRect()
+    if (!rect) return
+    const mouseX = e.clientX - rect.left
+    const mouseY = e.clientY - rect.top
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
+    x.set(mouseX - centerX)
+    y.set(mouseY - centerY)
+  }
 
-      imageRef.current.addEventListener("mouseleave", () => {
-        gsap.to(imageRef.current, {
-          scale: 1,
-          duration: 0.3,
-          ease: "power2.out"
-        })
-      })
-    }
-
-    // Title hover animation
-    if (titleRef.current) {
-      titleRef.current.addEventListener("mouseenter", () => {
-        gsap.to(titleRef.current, {
-          scale: 1.02,
-          duration: 0.3,
-          ease: "power2.out"
-        })
-      })
-
-      titleRef.current.addEventListener("mouseleave", () => {
-        gsap.to(titleRef.current, {
-          scale: 1,
-          duration: 0.3,
-          ease: "power2.out"
-        })
-      })
-    }
-
-    // Tech badges hover animation
-    const badges = techRef.current?.querySelectorAll(".badge")
-    badges?.forEach(badge => {
-      badge.addEventListener("mouseenter", () => {
-        gsap.to(badge, {
-          scale: 1.1,
-          duration: 0.3,
-          ease: "power2.out"
-        })
-      })
-
-      badge.addEventListener("mouseleave", () => {
-        gsap.to(badge, {
-          scale: 1,
-          duration: 0.3,
-          ease: "power2.out"
-        })
-      })
-    })
-
-    // Links hover animation
-    const links = linksRef.current?.querySelectorAll("a")
-    links?.forEach(link => {
-      link.addEventListener("mouseenter", () => {
-        gsap.to(link, {
-          scale: 1.1,
-          duration: 0.3,
-          ease: "power2.out"
-        })
-      })
-
-      link.addEventListener("mouseleave", () => {
-        gsap.to(link, {
-          scale: 1,
-          duration: 0.3,
-          ease: "power2.out"
-        })
-      })
-    })
-
-    return () => {
-      if (imageRef.current) {
-        imageRef.current.removeEventListener("mouseenter", () => {})
-        imageRef.current.removeEventListener("mouseleave", () => {})
-      }
-      if (titleRef.current) {
-        titleRef.current.removeEventListener("mouseenter", () => {})
-        titleRef.current.removeEventListener("mouseleave", () => {})
-      }
-      badges?.forEach(badge => {
-        badge.removeEventListener("mouseenter", () => {})
-        badge.removeEventListener("mouseleave", () => {})
-      })
-      links?.forEach(link => {
-        link.removeEventListener("mouseenter", () => {})
-        link.removeEventListener("mouseleave", () => {})
-      })
-    }
-  }, [])
+  function handleMouseLeave() {
+    x.set(0)
+    y.set(0)
+  }
 
   return (
-    <Card 
+    <motion.div
       ref={cardRef}
-      className="overflow-hidden transition-all duration-300 bg-card/50 backdrop-blur-sm cursor-pointer"
+      className="relative w-full h-80 md:w-96 rounded-3xl p-4 shadow-xl border border-neutral-200 dark:border-white/[0.1] shadow-black/[0.1] dark:shadow-white/[0.05] flex flex-col justify-between bg-white dark:bg-black cursor-pointer transition-transform duration-300"
+      style={{
+        perspective: 1000,
+        rotateX,
+        rotateY,
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       onClick={onClick}
     >
-      <div 
-        ref={imageRef}
-        className="relative w-full h-48 overflow-hidden"
-      >
+      <div className="relative w-full h-40 overflow-hidden rounded-xl mb-4">
         <Image
           src={project.image}
           alt={project.title}
           fill
-          className="object-fill transition-transform duration-300 "
+          className="object-cover transition-transform duration-300"
         />
       </div>
-      <CardHeader>
-        <CardTitle 
-          ref={titleRef}
-          className="text-xl font-bold tracking-tight"
-        >
-          {project.title}
-        </CardTitle>
-        <p 
-          ref={descriptionRef}
-          className="text-muted-foreground line-clamp-2"
-        >
-          {project.description}
-        </p>
-      </CardHeader>
-      <CardContent>
-        <div 
-          ref={techRef}
-          className="flex flex-wrap gap-2 mb-4"
-        >
-          {project.techStack.map((tech) => (
+      <div className="flex-1 flex flex-col justify-between">
+        <div>
+          <h3 className="text-xl font-bold tracking-tight mb-1">{project.title}</h3>
+          <p className="text-muted-foreground line-clamp-2 mb-2">{project.description}</p>
+        </div>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.techStack.map((tech: string) => (
             <Badge key={tech} variant="secondary">
               {tech}
             </Badge>
           ))}
         </div>
-        <div 
-          ref={linksRef}
-          className="flex gap-2"
-        >
+        <div className="flex gap-2 mt-auto">
           {project.repoUrl && (
             <Button variant="outline" size="sm" asChild>
               <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
@@ -184,7 +89,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
             </Button>
           )}
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </motion.div>
   )
 } 

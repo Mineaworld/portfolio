@@ -75,7 +75,8 @@ export default function ProjectModal({ open, onClose, project }: ProjectModalPro
                 <Image 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover rounded-t-xl"
+                  fill
+                  className="object-cover rounded-t-xl"
                 />
               </div>
 
