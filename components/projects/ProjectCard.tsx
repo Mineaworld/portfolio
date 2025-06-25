@@ -41,7 +41,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
   return (
     <motion.div
       ref={cardRef}
-      className="relative w-full h-80 md:w-96 rounded-3xl p-4 shadow-xl border border-neutral-200 dark:border-white/[0.1] shadow-black/[0.1] dark:shadow-white/[0.05] flex flex-col justify-between bg-white dark:bg-black cursor-pointer transition-transform duration-300"
+      className="relative w-full md:w-96 rounded-3xl p-3 shadow-xl border border-neutral-200 dark:border-white/[0.1] shadow-black/[0.1] dark:shadow-white/[0.05] flex flex-col bg-white dark:bg-black cursor-pointer transition-transform duration-300"
       style={{
         perspective: 1000,
         rotateX,
@@ -51,20 +51,20 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
     >
-      <div className="relative w-full h-40 overflow-hidden rounded-xl mb-4">
+      <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl group">
         <Image
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover transition-transform duration-300"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
-      <div className="flex-1 flex flex-col justify-between">
+      <div className="flex-1 flex flex-col justify-between mt-2">
         <div>
           <h3 className="text-xl font-bold tracking-tight mb-1">{project.title}</h3>
           <p className="text-muted-foreground line-clamp-2 mb-2">{project.description}</p>
         </div>
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-3">
           {project.techStack.map((tech: string) => (
             <Badge key={tech} variant="secondary">
               {tech}
