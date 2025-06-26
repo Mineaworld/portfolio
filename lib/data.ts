@@ -232,7 +232,7 @@ export const projects: Project[] = [
     title: "TradeKaizen",
     description: "A modern trading journal and analytics platform built with Next.js 14, empowering traders with real-time insights, performance analytics, and a seamless user experience.",
     image: "/projects/TradeKaizen.png",
-    demoUrl: "", // No public demo link in the repo
+    demoUrl: "https://tradekaizen.vercel.app/",
     repoUrl: "https://github.com/Mineaworld/TradeKaizen",
     techStack: [
       "Next.js",
