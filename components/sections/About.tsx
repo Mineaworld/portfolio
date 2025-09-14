@@ -160,20 +160,19 @@ export function About() {
             ref={el => paragraphsRef.current[0] = el!}
             className="text-lg text-muted-foreground leading-relaxed cursor-pointer"
           >
-            Hey, I&apos;m <span className="font-semibold">Dy Minea</span> – a web developer who loves turning ideas into sleek, responsive websites. With tech skills from React, Tailwind, PHP, Next.js, and SQL, I create clean and user-friendly web applications that solve real-world problems. I&apos;m always exploring new tech and AI-driven solutions to stay ahead of the curve.
+            Hey there, I&apos;m <span className="font-semibold">Dy Minea</span> – a web developer with a passion for transforming ideas into smooth, responsive websites. I specialize in technologies like React, Tailwind, PHP, Next.js, and SQL, crafting clean and user-friendly web applications that solve real-world challenges. I&apos;m always diving into new tech and exploring AI-driven solutions to stay ahead of the game.
           </p>
           <p 
             ref={el => paragraphsRef.current[1] = el!}
             className="text-lg text-muted-foreground leading-relaxed cursor-pointer"
           >
-            When I&apos;m not coding, you&apos;ll find me working on side projects, staying fit, or learning something new. 
-            
+            When I&apos;m not coding, you&apos;ll likely find me working on side projects, staying active, or learning something new.
           </p>
           <p 
             ref={el => paragraphsRef.current[2] = el!}
             className="text-lg text-muted-foreground leading-relaxed"
           >
-            <span className="italic">Let&apos;s connect and build something amazing!</span>
+            <span className="italic">Let&apos;s connect and create something incredible together!</span>
           </p>
         </div>
       </div>
