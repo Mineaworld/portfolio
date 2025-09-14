@@ -48,7 +48,7 @@ export default function ProjectGrid() {
           gsap.to(card, {
             y: -8,
             scale: 1.02,
-            boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
             duration: 0.3,
             ease: "power2.out"
           })
@@ -60,7 +60,7 @@ export default function ProjectGrid() {
           gsap.to(card, {
             y: 0,
             scale: 1,
-            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
             duration: 0.3,
             ease: "power2.out"
           })
@@ -91,13 +91,13 @@ export default function ProjectGrid() {
     <div className="relative">
       <div 
         ref={gridRef}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr"
       >
         {projects.map((project, index) => (
           <div 
             key={project.id}
             ref={el => cardRefs.current[index] = el}
-            className="cursor-pointer"
+            className="cursor-pointer w-full"
             onClick={() => handleCardClick(project)}
           >
             <ProjectCard project={project} />

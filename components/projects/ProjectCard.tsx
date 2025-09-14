@@ -1,13 +1,9 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Project } from "@/lib/data"
 import Image from "next/image"
 import { ExternalLink, Github } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { motion, useMotionValue, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 
 interface ProjectCardProps {
   project: Project
@@ -15,40 +11,22 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {
-  // 3D Card Effect logic
-  const cardRef = useRef<HTMLDivElement>(null)
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-  const rotateX = useTransform(y, [-50, 50], [15, -15])
-  const rotateY = useTransform(x, [-50, 50], [-15, 15])
-
-  function handleMouseMove(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    const rect = cardRef.current?.getBoundingClientRect()
-    if (!rect) return
-    const mouseX = e.clientX - rect.left
-    const mouseY = e.clientY - rect.top
-    const centerX = rect.width / 2
-    const centerY = rect.height / 2
-    x.set(mouseX - centerX)
-    y.set(mouseY - centerY)
-  }
-
-  function handleMouseLeave() {
-    x.set(0)
-    y.set(0)
-  }
-
   return (
     <motion.div
-      ref={cardRef}
-      className="relative w-full md:w-96 rounded-3xl p-3 shadow-xl border border-neutral-200 dark:border-white/[0.1] shadow-black/[0.1] dark:shadow-white/[0.05] flex flex-col bg-white dark:bg-black cursor-pointer transition-transform duration-300"
+      className="relative w-full h-full rounded-3xl p-3 flex flex-col cursor-pointer"
       style={{
-        perspective: 1000,
-        rotateX,
-        rotateY,
+        backgroundColor: 'transparent',
+        background: 'transparent',
       }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      whileHover={{ 
+        y: -8,
+        scale: 1.02,
+        transition: { duration: 0.2, ease: "easeOut" }
+      }}
+      whileTap={{ scale: 0.98 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
       onClick={onClick}
     >
       <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl group">
@@ -66,27 +44,33 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
         </div>
         <div className="flex flex-wrap gap-2 mb-3">
           {project.techStack.map((tech: string) => (
-            <Badge key={tech} variant="secondary">
+            <span key={tech} className="px-2 py-1 text-xs rounded-full border border-neutral-300/50 dark:border-white/20 text-neutral-700 dark:text-neutral-300 bg-transparent">
               {tech}
-            </Badge>
+            </span>
           ))}
         </div>
         <div className="flex gap-2 mt-auto">
           {project.repoUrl && (
-            <Button variant="outline" size="sm" asChild>
-              <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4 mr-2" />
-                Code
-              </a>
-            </Button>
+            <a 
+              href={project.repoUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center px-3 py-2 text-sm rounded-md border border-neutral-300/50 dark:border-white/20 text-neutral-700 dark:text-neutral-300 bg-transparent hover:bg-neutral-100/30 dark:hover:bg-white/5 transition-colors"
+            >
+              <Github className="h-4 w-4 mr-2" />
+              Code
+            </a>
           )}
           {project.demoUrl && (
-            <Button variant="outline" size="sm" asChild>
-              <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="h-4 w-4 mr-2" />
-                Demo
-              </a>
-            </Button>
+            <a 
+              href={project.demoUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center px-3 py-2 text-sm rounded-md border border-neutral-300/50 dark:border-white/20 text-neutral-700 dark:text-neutral-300 bg-transparent hover:bg-neutral-100/30 dark:hover:bg-white/5 transition-colors"
+            >
+              <ExternalLink className="h-4 w-4 mr-2" />
+              Demo
+            </a>
           )}
         </div>
       </div>
