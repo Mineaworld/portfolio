@@ -1,110 +1,155 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useState, useEffect } from "react"
-import { cn } from "@/lib/utils"
-import { ThemeToggle } from "@/components/ThemeToggle"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
-
-const navItems = [
-  { href: "#home", label: "Home" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
-]
+import { useEffect, useMemo, useState } from "react";
+import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { Menu, X } from "lucide-react";
+import { homeNavigation } from "@/lib/data";
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeHref, setActiveHref] = useState<HomeHref>("#home");
+
+  const sectionIds = useMemo(
+    () => homeNavigation.map((item) => item.href.replace("#", "")),
+    []
+  );
+
   useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY
-      setScrolled(offset > 50)
+    const handleScroll = () => setIsScrolled(window.scrollY > 12);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!visible?.target.id) {
+          return;
+        }
+
+        setActiveHref(`#${visible.target.id}` as HomeHref);
+      },
+      {
+        rootMargin: "-35% 0px -50% 0px",
+        threshold: [0, 0.05, 0.1, 0.2, 0.35],
+      }
+    );
+
+    sectionIds.forEach((sectionId) => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, [sectionIds]);
+
+  const handleNavClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: HomeHref
+  ) => {
+    event.preventDefault();
+    setIsMenuOpen(false);
+
+    const target = document.querySelector<HTMLElement>(href);
+    if (!target) {
+      return;
     }
-    
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-  
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
-  
-  const scrollToSection = (sectionId: string) => {
-    setIsMenuOpen(false)
-    const element = document.querySelector(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
-  
+
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    setActiveHref(href);
+    window.history.replaceState(null, "", href);
+  };
+
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300",
-        scrolled
-          ? "bg-background/80 backdrop-blur-md border-b shadow-sm"
-          : "bg-transparent"
-      )}
-    >
-      <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link 
-          href="#home" 
-          className="text-xl font-bold tracking-tight transition-colors hover:text-primary/90 ml-4 sm:ml-8 md:ml-12 flex items-center space-x-1"
-          onClick={() => scrollToSection("#home")}
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div className="site-shell">
+        <div
+          className={cn(
+            "mt-2 rounded-2xl border px-3 py-2 transition-all duration-300 sm:px-4",
+            isScrolled
+              ? "border-border/95 bg-background/88 shadow-[0_12px_24px_hsl(var(--foreground)/0.08)] backdrop-blur"
+              : "border-border/80 bg-background/74 backdrop-blur-sm"
+          )}
         >
-          <span className="text-primary">&lt;</span>
-          <span>Dy Minea</span>
-          <span className="text-primary">/&gt;</span>
-        </Link>
-        
-        <div className="hidden md:flex items-center space-x-1">
-          <nav className="mr-4">
-            <ul className="flex space-x-1">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <Button
-                    variant="ghost"
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-base hover:text-primary/90"
+          <div className="flex h-10 items-center gap-3">
+            <a
+              href="#home"
+              onClick={(event) => handleNavClick(event, "#home")}
+              className="line-clamp-1 font-mono text-sm font-semibold tracking-[0.08em] text-foreground"
+            >
+              DY MINEA
+            </a>
+
+            <div className="flex-1" />
+
+            <nav className="hidden items-center gap-1 md:flex">
+              {homeNavigation.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(event) =>
+                    handleNavClick(event, item.href as HomeHref)
+                  }
+                  className={cn(
+                    "rounded-full px-3 py-1.5 font-mono text-xs tracking-[0.09em] transition-colors",
+                    activeHref === item.href
+                      ? "bg-accent/12 text-accent"
+                      : "text-foreground hover:text-muted-foreground"
+                  )}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+
+            <ThemeToggle />
+
+            <button
+              type="button"
+              onClick={() => setIsMenuOpen((value) => !value)}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/70 bg-background text-foreground md:hidden"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
+          </div>
+
+          {isMenuOpen ? (
+            <div className="mt-2 border-t border-border/80 pt-2 md:hidden">
+              <nav className="grid gap-1 pb-1">
+                {homeNavigation.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={(event) =>
+                      handleNavClick(event, item.href as HomeHref)
+                    }
+                    className={cn(
+                      "rounded-lg px-3 py-2 font-mono text-xs tracking-[0.09em] transition-colors",
+                      activeHref === item.href
+                        ? "bg-accent/12 text-accent"
+                        : "text-foreground hover:bg-muted/65 hover:text-muted-foreground"
+                    )}
                   >
                     {item.label}
-                  </Button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <ThemeToggle />
-        </div>
-        
-        <div className="flex items-center md:hidden">
-          <ThemeToggle />
-          <Button variant="ghost" size="icon" onClick={toggleMenu} className="ml-2">
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </Button>
+                  </a>
+                ))}
+              </nav>
+            </div>
+          ) : null}
         </div>
       </div>
-      
-      {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b shadow-md">
-          <nav className="container mx-auto py-4">
-            <ul className="space-y-2">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <Button
-                    variant="ghost"
-                    onClick={() => scrollToSection(item.href)}
-                    className="w-full justify-start text-base"
-                  >
-                    {item.label}
-                  </Button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      )}
     </header>
-  )
+  );
 }
+
+type HomeHref = (typeof homeNavigation)[number]["href"];

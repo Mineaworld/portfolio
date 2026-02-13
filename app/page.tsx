@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { PanelDivider } from "@/components/layout/PanelDivider";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
@@ -11,12 +12,19 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Header />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Contact />
+      <div className="site-shell pt-24 sm:pt-28">
+        <Hero />
+        <PanelDivider />
+        <About />
+        <PanelDivider />
+        <Skills />
+        <PanelDivider />
+        <Projects />
+        <PanelDivider />
+        <Experience />
+        <PanelDivider />
+        <Contact />
+      </div>
       <Footer />
     </main>
   );
