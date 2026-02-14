@@ -64,7 +64,14 @@ export function Header() {
       return;
     }
 
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    target.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      block: "start",
+    });
     setActiveHref(href);
     window.history.replaceState(null, "", href);
   };
