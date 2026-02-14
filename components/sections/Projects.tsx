@@ -1,99 +1,73 @@
-"use client"
-
-import { useEffect, useRef } from "react"
-import ProjectGrid from '../projects/ProjectGrid'
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { ExternalLink, Github } from "lucide-react";
+import { projects } from "@/lib/data";
 
 export function Projects() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const titleRef = useRef<HTMLHeadingElement>(null)
-  const descriptionRef = useRef<HTMLParagraphElement>(null)
-  const gridRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
-    
-    // Title animation
-    gsap.fromTo(
-      titleRef.current,
-      {
-        y: 50,
-        opacity: 0,
-        scale: 0.9,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: "top bottom-=100",
-          toggleActions: "play none none reverse"
-        }
-      }
-    )
-
-    // Description animation
-    gsap.fromTo(
-      descriptionRef.current,
-      {
-        y: 30,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: descriptionRef.current,
-          start: "top bottom-=100",
-          toggleActions: "play none none reverse"
-        }
-      }
-    )
-
-    // Grid animation
-    gsap.fromTo(
-      gridRef.current,
-      {
-        y: 50,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: gridRef.current,
-          start: "top bottom-=100",
-          toggleActions: "play none none reverse"
-        }
-      }
-    )
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    }
-  }, [])
+  if (projects.length === 0) {
+    return null;
+  }
 
   return (
-    <section ref={sectionRef} id="projects" className="py-20 bg-muted/30">
-      <div className="container px-4">
-        <div className="text-center mb-12">
-          <h2 ref={titleRef} className="text-3xl font-bold tracking-tight mb-2">Projects</h2>
-          <p ref={descriptionRef} className="text-muted-foreground max-w-2xl mx-auto">
-            Explore some of my featured work, built with modern technologies and a focus on great user experience.
-          </p>
+    <section id="projects" className="scroll-mt-28">
+      <div className="section-panel rise-in">
+        <div className="section-panel-header">
+          <p className="label-mono text-muted-foreground">Projects</p>
+          <h2 className="display-title mt-2 text-3xl sm:text-4xl">
+            Selected projects with clear outcomes.
+          </h2>
         </div>
-        <div ref={gridRef}>
-          <ProjectGrid />
+
+        <div className="section-panel-body">
+          <div className="grid gap-4 md:grid-cols-2">
+            {projects.map((project) => (
+              <article
+                key={project.id}
+                className="flex h-full flex-col rounded-xl border border-border/80 bg-background/70 p-4 sm:p-5"
+              >
+                <h3 className="text-lg font-semibold">{project.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {project.description}
+                </p>
+
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.techStack.slice(0, 5).map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-border bg-secondary/55 px-2 py-1 text-xs text-muted-foreground"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-auto flex flex-wrap gap-3 pt-4">
+                  {project.demoUrl ? (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      Demo
+                    </a>
+                  ) : null}
+                  {project.repoUrl ? (
+                    <a
+                      href={project.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-foreground/90 hover:underline"
+                    >
+                      <Github className="h-4 w-4" />
+                      Repository
+                    </a>
+                  ) : null}
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

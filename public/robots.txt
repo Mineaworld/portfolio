@@ -1,0 +1,6 @@
+# robots.txt for dyminea.dev
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://dyminea.dev/sitemap.xml

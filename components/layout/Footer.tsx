@@ -1,35 +1,44 @@
-import Link from "next/link"
-import { Mail } from "lucide-react"
-import { SocialIcons } from "@/components/ui/social-icons"
+import Link from "next/link";
+import { SocialIcons } from "@/components/ui/social-icons";
+import { homepageProfile } from "@/lib/data";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
-  
+  const currentYear = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date());
+
   return (
-    <footer className="bg-muted/50 py-6">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-center sm:text-left">
-            <h3 className="text-lg font-bold">&lt; Dy Minea /&gt;</h3>
-            <p className="text-sm text-muted-foreground">Web Developer</p>
+    <footer className="py-10">
+      <div className="site-shell">
+        <div className="section-panel">
+          <div className="section-panel-body flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="label-mono text-muted-foreground">Build with intent</p>
+              <h2 className="display-title mt-2 text-2xl sm:text-3xl">
+                Let&apos;s build software that moves the business.
+              </h2>
+              <p className="mt-2 max-w-xl text-sm text-muted-foreground">
+                Open to freelance software engineering collaborations, product roles, and thoughtful
+                technical partnerships.
+              </p>
+              <Link
+                href={`mailto:${homepageProfile.contact.email}`}
+                className="mt-3 inline-flex text-sm font-medium text-accent hover:underline"
+              >
+                {homepageProfile.contact.email}
+              </Link>
+            </div>
+
+            <div className="flex flex-col items-start gap-4 sm:items-end">
+              <SocialIcons size="sm" />
+              <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+                &copy; <span suppressHydrationWarning>{currentYear}</span> Dy Minea
+              </p>
+            </div>
           </div>
-          
-          <div className="flex items-center gap-4">
-            <SocialIcons iconSize={4} />
-            <Link 
-              href="mailto:contact@dyminea.com" 
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Email"
-            >
-              <Mail className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-        
-        <div className="mt-4 text-center text-xs text-muted-foreground">
-          <p>&copy; {currentYear} Dy Minea. All rights reserved.</p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

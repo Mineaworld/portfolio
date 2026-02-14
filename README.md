@@ -1,49 +1,60 @@
-# My Portfolio
+# Dy Minea Portfolio
 
-A modern, responsive portfolio website showcasing my work, skills, and experience as a Web Developer.
+Portfolio website built with Next.js, TypeScript, and Tailwind CSS.
 
-## 🚀 Features
+## Stack
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui primitives
 
-- Clean, professional design
-- Responsive layout for all devices
-- Project showcase with descriptions and links
-- About, Skills, Experience, and Contact sections
-- Built with Next.js, React, and Tailwind CSS
+## Local Development
+1. Install dependencies:
+```bash
+npm install
+```
+2. Start dev server:
+```bash
+npm run dev
+```
+3. Open `http://localhost:3000`.
 
-## 🛠️ Tech Stack
+## Production Build (Static Export)
+1. Build the app:
+```bash
+npm run build
+```
+2. Preview exported output:
+```bash
+npm run start
+```
 
-- **Framework:** Next.js, React
-- **Styling:** Tailwind CSS
-- **Language:** TypeScript
-- **Other:** ESLint, Prettier
+`npm run start` serves the generated `out/` directory on port `3000`.
 
-## 📦 Getting Started
+## Quality Checks
+- Lint:
+```bash
+npm run lint
+```
+- Typecheck:
+```bash
+npm run typecheck
+```
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Mineaworld/portfolio.git
-   cd portfolio
-   ```
+## Troubleshooting (Windows)
+If build fails with `EPERM ... .next\\trace`:
+1. Stop all running Next.js or Node processes.
+2. Delete `.next` and `out` folders.
+3. Run:
+```bash
+npm run build
+```
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-## 📄 Sections
-
-- **About:** Brief introduction and background.
-- **Skills:** Technologies and tools expertise.
-- **Experience:** Work history and notable projects.
-- **Projects:** Selected works with links and descriptions.
-- **Contact:** Ways to get in touch.
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE). 
+## Included Sections
+- Hero
+- About
+- Skills
+- Projects
+- Experience
+- Contact
