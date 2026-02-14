@@ -27,6 +27,12 @@ const contactSchema = z.object({
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
+type ContactApiError = {
+  ok: false;
+  code: string;
+  message: string;
+  fieldErrors?: Partial<Record<keyof ContactFormValues, string[]>>;
+};
 
 const contactHighlights = [
   {
@@ -65,13 +71,51 @@ export function Contact() {
   const onSubmit = async (_values: ContactFormValues) => {
     setIsSubmitting(true);
 
-    await new Promise((resolve) => {
-      setTimeout(resolve, 1100);
-    });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(_values),
+      });
 
-    toast.success("Message sent. I will get back to you soon.");
-    form.reset();
-    setIsSubmitting(false);
+      const result = (await response.json().catch(() => null)) as
+        | { ok: true }
+        | ContactApiError
+        | null;
+
+      if (!response.ok || !result || result.ok !== true) {
+        const errorResult = result as ContactApiError | null;
+
+        if (errorResult?.fieldErrors) {
+          (Object.keys(errorResult.fieldErrors) as Array<keyof ContactFormValues>).forEach(
+            (fieldName) => {
+              const fieldError = errorResult.fieldErrors?.[fieldName]?.[0];
+              if (fieldError) {
+                form.setError(fieldName, { message: fieldError });
+              }
+            }
+          );
+        }
+
+        throw new Error(
+          errorResult?.message ??
+            "Message could not be sent right now. Please try again."
+        );
+      }
+
+      toast.success("Message sent. I will get back to you soon.");
+      form.reset();
+    } catch (error) {
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "Message could not be sent right now. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
