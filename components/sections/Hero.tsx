@@ -30,7 +30,7 @@ export function Hero() {
 
               <div className="flex flex-wrap gap-3">
                 <Button asChild>
-                  <Link href="#contact">Discuss your project</Link>
+                  <Link href="#contact">Get in touch</Link>
                 </Button>
                 <Button variant="outline" asChild>
                   <a href="/Resume/DY MINEA - Resume.pdf" download>
