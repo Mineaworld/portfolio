@@ -50,6 +50,7 @@ export function Hero() {
                     alt="Dy Minea"
                     fill
                     priority
+                    sizes="(min-width: 1024px) 34vw, 100vw"
                     className="object-cover object-[center_74%]"
                   />
                 </div>

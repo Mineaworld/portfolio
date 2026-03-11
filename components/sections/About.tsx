@@ -1,10 +1,10 @@
 import { homepageProfile } from "@/lib/data";
 
 const focusAreas = [
-  "Product-minded frontend engineering",
-  "Readable design systems with clean constraints",
-  "Performance-first interaction design",
-  "Reliable delivery with maintainable code",
+  "Frontend work with product thinking",
+  "Design systems that stay readable",
+  "Fast, smooth interactions",
+  "Code that stays maintainable",
 ];
 
 export function About() {
@@ -14,7 +14,7 @@ export function About() {
         <div className="section-panel-header">
           <p className="label-mono text-muted-foreground">About</p>
           <h2 className="display-title mt-2 text-3xl sm:text-4xl">
-            I turn product ideas into shippable software.
+            I build products that feel clear, useful, and ready to ship.
           </h2>
         </div>
 

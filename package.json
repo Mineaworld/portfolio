@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "clean": "node -e \"const fs=require('fs');['.next','out'].forEach((dir)=>fs.rmSync(dir,{recursive:true,force:true}))\"",
     "dev": "next dev",
     "build": "next build",
-    "start": "serve out -l 3000",
+    "start": "next start",
     "lint": "next lint",
     "typecheck": "next typegen && tsc --noEmit"
   },

@@ -75,9 +75,9 @@ export const homepageProfile: HomepageProfile = {
   location: "Phnom Penh, Cambodia",
   availability: "Available for software engineering opportunities",
   about: [
-    "I focus on building products that balance visual quality with long-term maintainability. My process starts with clear structure, then layers in thoughtful interaction and performance.",
-    "Most of my work sits at the intersection of software engineering and product design. I translate complex requirements into interfaces that are easy to use and quick to understand.",
-    "Outside client and portfolio work, I sharpen my skills through side projects, technical experiments, and continuous learning."
+    "I like building products that look polished without becoming hard to maintain. I usually start with structure and clarity, then refine the details around interaction and performance.",
+    "A lot of my work sits between engineering and product thinking. I enjoy taking messy requirements and turning them into interfaces that feel simple, useful, and easy to navigate.",
+    "Outside of project work, I keep learning through side projects, small technical experiments, and regular hands-on practice."
   ],
   contact: {
     email: "minea.dyy@gmail.com",
@@ -434,28 +434,28 @@ export const projects: Project[] = [
 export const experiences: Experience[] = [
   {
     id: "exp-1",
-    position: "Hands-On Full-Stack Project Development",
-    company: "Personal and Academic Portfolio Projects",
+    position: "Full-Stack Project Development",
+    company: "Personal and Academic Projects",
     location: "Remote and Phnom Penh",
     startDate: "2024",
     endDate: "Present",
     achievements: [
-      "Built and deployed practical web applications using React, Next.js, Laravel, and Firebase.",
-      "Implemented authentication, role-based flows, and CRUD-heavy modules across multiple projects.",
-      "Iterated features from user feedback and maintained project structure for long-term updates.",
+      "Built and shipped web applications with React, Next.js, Laravel, and Firebase.",
+      "Worked on authentication, role-based flows, and CRUD-heavy features across different projects.",
+      "Refined features from feedback and kept the codebase organized so the projects stayed easy to update.",
     ],
   },
   {
     id: "exp-2",
-    position: "Practical Frontend Engineering Practice",
+    position: "Frontend Engineering Practice",
     company: "Self-Led UI and Interaction Projects",
     location: "Remote",
     startDate: "2023",
     endDate: "2024",
     achievements: [
-      "Practiced responsive UI implementation through clone and dashboard projects with real component structure.",
-      "Improved motion and interaction quality using GSAP and modern React patterns.",
-      "Turned tutorial baselines into customized implementations with added features and better usability.",
+      "Built responsive interfaces through clone and dashboard projects that gave me real practice with layout and component structure.",
+      "Used GSAP and React to make interactions feel smoother and more intentional.",
+      "Started from tutorial foundations when useful, then pushed them further with my own features and usability improvements.",
     ],
   },
 ];
