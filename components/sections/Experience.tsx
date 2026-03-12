@@ -8,7 +8,7 @@ export function Experience() {
         <div className="section-panel-header">
           <p className="label-mono text-muted-foreground">Experience</p>
           <h2 className="display-title mt-2 text-3xl sm:text-4xl">
-            Practical training and real project execution.
+            The work and practice that shaped how I build.
           </h2>
         </div>
 
