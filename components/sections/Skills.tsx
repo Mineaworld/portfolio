@@ -21,27 +21,44 @@ const categoryPriorityMap: Record<SkillCategoryId, number> = {
 };
 
 const skillPriorityMap: Partial<Record<string, number>> = {
-  TypeScript: 100,
-  React: 99,
-  NextJS: 98,
+  React: 100,
+  "Next.js": 99,
+  TypeScript: 98,
   JavaScript: 97,
+  "Tailwind CSS": 96,
   "HTML/CSS": 95,
-  Tailwind: 94,
-  SQL: 96,
-  PostgreSQL: 95,
-  MySQL: 94,
-  Supabase: 93,
-  Firebase: 92,
-  "Git/GitHub": 98,
-  AWS: 97,
-  Vercel: 96,
-  Linux: 95,
-  "VS Code": 90,
-  Cursor: 89,
-  Codex: 93,
-  "Claude Code": 92,
-  n8n: 91,
-  Make: 90,
+  GSAP: 94,
+  Laravel: 100,
+  PHP: 99,
+  Python: 80,
+  SQL: 100,
+  MySQL: 99,
+  PostgreSQL: 98,
+  Firebase: 97,
+  Supabase: 96,
+  "SQL Server": 80,
+  Oracle: 79,
+  Navicat: 78,
+  "Git/GitHub": 100,
+  Postman: 99,
+  Vercel: 98,
+  "VS Code": 97,
+  Cursor: 96,
+  AWS: 80,
+  Linux: 79,
+  Trello: 70,
+  ClickUp: 69,
+  Lucidchart: 68,
+  Mermaid: 67,
+  n8n: 100,
+  Make: 99,
+  Codex: 98,
+  "Claude Code": 97,
+  WordPress: 100,
+  Joomla: 99,
+  Canva: 98,
+  "Adobe Creative Suite": 97,
+  "Microsoft Office": 96,
 };
 
 const getSkillPriority = (skillName: string) => skillPriorityMap[skillName] ?? 0;
@@ -57,11 +74,11 @@ export function Skills() {
         <div className="section-panel-header">
           <p className="label-mono text-muted-foreground">Skills</p>
           <h2 className="display-title mt-2 text-3xl sm:text-4xl">
-            Tools I use to build, ship and scale products
+            Technologies and tools I use in practice
           </h2>
           <p className="mt-3 max-w-3xl text-sm text-muted-foreground sm:text-base">
-            Organized by function so you can quickly see how I design, build
-            and deliver software.
+            Organized by function, with the tools I use most often in web
+            projects listed first and supporting tools included alongside them.
           </p>
         </div>
 

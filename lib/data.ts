@@ -67,17 +67,17 @@ export const homeNavigation: HomeNavigationItem[] = [
 
 export const homepageProfile: HomepageProfile = {
   name: "Dy Minea",
-  role: "Software Engineer & UI-Focused Builder",
+  role: "Software Engineer",
   tagline:
-    "I build fast, clear digital products that teams can ship and scale with confidence.",
+    "I build clear web products with attention to usability, performance, and maintainable code.",
   summary:
-    "I work across Typescript, React, Next.js, Laravel and modern backend tooling to turn ideas into production-ready products with strong UX and maintainable architecture.",
+    "I work mainly with TypeScript, React, Next.js, Laravel, and modern database tooling to build web products that are practical, easy to use, and ready to ship.",
   location: "Phnom Penh, Cambodia",
-  availability: "Open for freelance software engineering projects",
+  availability: "Available for software engineering opportunities",
   about: [
-    "I focus on building products that balance visual quality with long-term maintainability. My process starts with clear structure, then layers in thoughtful interaction and performance.",
-    "Most of my work sits at the intersection of software engineering and product design. I translate complex requirements into interfaces that are easy to use and quick to understand.",
-    "Outside client and portfolio work, I sharpen my skills through side projects, technical experiments, and continuous learning."
+    "I like building products that look polished without becoming hard to maintain. I usually start with structure and clarity, then refine the details around interaction and performance.",
+    "A lot of my work sits between engineering and product thinking. I enjoy taking messy requirements and turning them into interfaces that feel simple, useful, and easy to navigate.",
+    "Outside of project work, I keep learning through side projects, small technical experiments, and regular hands-on practice."
   ],
   contact: {
     email: "minea.dyy@gmail.com",
@@ -95,34 +95,29 @@ export const portfolioStats = {
 
 export const skills: Skill[] = [
   {
-    name: "JavaScript",
-    category: "backend",
-    icon: "/skills/javascript.svg",
-  },
-  {
-    name: "TypeScript",
-    category: "backend",
-    icon: "/skills/Typescript.svg",
-  },
-  {
     name: "React",
     category: "frontend",
     icon: "/skills/react.svg",
   },
   {
-    name: "NextJS",
+    name: "Next.js",
     category: "frontend",
     icon: "/skills/nextjs.svg",
   },
   {
-    name: "Tailwind",
+    name: "TypeScript",
     category: "frontend",
-    icon: "/skills/Tailwind.svg",
+    icon: "/skills/Typescript.svg",
   },
   {
-    name: "GSAP",
+    name: "JavaScript",
     category: "frontend",
-    icon: "/skills/gsap.svg",
+    icon: "/skills/javascript.svg",
+  },
+  {
+    name: "Tailwind CSS",
+    category: "frontend",
+    icon: "/skills/Tailwind.svg",
   },
   {
     name: "HTML/CSS",
@@ -130,9 +125,9 @@ export const skills: Skill[] = [
     icon: "/skills/htmlcss.svg",
   },
   {
-    name: "PHP",
-    category: "backend",
-    icon: "/skills/php.svg",
+    name: "GSAP",
+    category: "frontend",
+    icon: "/skills/gsap.svg",
   },
   {
     name: "Laravel",
@@ -140,9 +135,14 @@ export const skills: Skill[] = [
     icon: "/skills/laravel.svg",
   },
   {
-    name: "Firebase",
-    category: "databases",
-    icon: "/skills/firebase.svg",
+    name: "PHP",
+    category: "backend",
+    icon: "/skills/php.svg",
+  },
+  {
+    name: "Python",
+    category: "backend",
+    icon: "/skills/fallback.svg",
   },
   {
     name: "SQL",
@@ -160,6 +160,16 @@ export const skills: Skill[] = [
     icon: "/skills/fallback.svg",
   },
   {
+    name: "Firebase",
+    category: "databases",
+    icon: "/skills/firebase.svg",
+  },
+  {
+    name: "Supabase",
+    category: "databases",
+    icon: "/skills/supabase.svg",
+  },
+  {
     name: "SQL Server",
     category: "databases",
     icon: "/skills/sqlserver.svg",
@@ -170,18 +180,8 @@ export const skills: Skill[] = [
     icon: "/skills/fallback.svg",
   },
   {
-    name: "Supabase",
-    category: "databases",
-    icon: "/skills/supabase.svg",
-  },
-  {
     name: "Navicat",
     category: "databases",
-    icon: "/skills/fallback.svg",
-  },
-  {
-    name: "Python",
-    category: "backend",
     icon: "/skills/fallback.svg",
   },
   {
@@ -190,9 +190,14 @@ export const skills: Skill[] = [
     icon: "/skills/github.svg",
   },
   {
-    name: "Linux",
+    name: "Postman",
     category: "swe_tools",
     icon: "/skills/fallback.svg",
+  },
+  {
+    name: "Vercel",
+    category: "swe_tools",
+    icon: "/skills/vercel.svg",
   },
   {
     name: "VS Code",
@@ -205,12 +210,12 @@ export const skills: Skill[] = [
     icon: "/skills/Cursor.svg",
   },
   {
-    name: "Vercel",
+    name: "AWS",
     category: "swe_tools",
-    icon: "/skills/vercel.svg",
+    icon: "/skills/fallback.svg",
   },
   {
-    name: "AWS",
+    name: "Linux",
     category: "swe_tools",
     icon: "/skills/fallback.svg",
   },
@@ -348,7 +353,7 @@ export const projects: Project[] = [
     image: "/projects/Inventory.png",
     demoUrl: "",
     repoUrl: "https://github.com/Mineaworld/Inventory-Management",
-    techStack: ["Laravel", "React.js", "Inertia.js", "MySQL"],
+    techStack: ["Laravel", "React", "Inertia.js", "MySQL"],
     problem:
       "Small and mid-sized teams need structured product, supplier, and stock movement tracking with clear role permissions.",
     solution:
@@ -362,7 +367,7 @@ export const projects: Project[] = [
     image: "/projects/Zentry.png",
     demoUrl: "https://zentry-clone-awwards.vercel.app/",
     repoUrl: "https://github.com/Mineaworld/Zentry-Clone",
-    techStack: ["React.js", "Javascript", "Tailwind CSS", "GSAP"],
+    techStack: ["React", "JavaScript", "Tailwind CSS", "GSAP"],
     problem:
       "The goal was to practice complex motion design and responsive interaction patterns on a visually rich interface.",
     solution:
@@ -376,7 +381,7 @@ export const projects: Project[] = [
     image: "/projects/Banking.png",
     demoUrl: "",
     repoUrl: "https://github.com/Mineaworld/CityWeatherApp",
-    techStack: ["React.js", "JavaScript", "Vite", "Weatherbit API"],
+    techStack: ["React", "JavaScript", "Vite", "Weatherbit API"],
     problem:
       "Users need quick weather checks without navigating heavy weather platforms.",
     solution:
@@ -404,7 +409,7 @@ export const projects: Project[] = [
     image: "/projects/Inventory.png",
     demoUrl: "",
     repoUrl: "https://github.com/Mineaworld/Skincare_POS",
-    techStack: ["C#", "WinForms", ".NET Framework"],
+    techStack: ["C#", "WinForms"],
     problem:
       "Small skincare businesses need lightweight tooling to manage catalog data and streamline sales.",
     solution:
@@ -418,7 +423,7 @@ export const projects: Project[] = [
     image: "/projects/Banking.png",
     demoUrl: "https://banking-modern-ui.vercel.app/",
     repoUrl: "https://github.com/Mineaworld/Banking-React-Tailwind-UI",
-    techStack: ["React.js", "Javascript", "Tailwind CSS", "Vite"],
+    techStack: ["React", "JavaScript", "Tailwind CSS", "Vite"],
     problem:
       "Financial UI layouts require clear hierarchy and responsive behavior across screen sizes.",
     solution:
@@ -429,28 +434,28 @@ export const projects: Project[] = [
 export const experiences: Experience[] = [
   {
     id: "exp-1",
-    position: "Hands-On Full-Stack Project Development",
-    company: "Personal and Academic Portfolio Projects",
+    position: "Full-Stack Project Development",
+    company: "Personal and Academic Projects",
     location: "Remote and Phnom Penh",
     startDate: "2024",
     endDate: "Present",
     achievements: [
-      "Built and deployed practical web applications using React, Next.js, Laravel, and Firebase.",
-      "Implemented authentication, role-based flows, and CRUD-heavy modules across multiple projects.",
-      "Iterated features from user feedback and maintained project structure for long-term updates.",
+      "Built and shipped web applications with React, Next.js, Laravel, and Firebase.",
+      "Worked on authentication, role-based flows, and CRUD-heavy features across different projects.",
+      "Refined features from feedback and kept the codebase organized so the projects stayed easy to update.",
     ],
   },
   {
     id: "exp-2",
-    position: "Practical Frontend Engineering Practice",
+    position: "Frontend Engineering Practice",
     company: "Self-Led UI and Interaction Projects",
     location: "Remote",
     startDate: "2023",
     endDate: "2024",
     achievements: [
-      "Practiced responsive UI implementation through clone and dashboard projects with real component structure.",
-      "Improved motion and interaction quality using GSAP and modern React patterns.",
-      "Turned tutorial baselines into customized implementations with added features and better usability.",
+      "Built responsive interfaces through clone and dashboard projects that gave me real practice with layout and component structure.",
+      "Used GSAP and React to make interactions feel smoother and more intentional.",
+      "Started from tutorial foundations when useful, then pushed them further with my own features and usability improvements.",
     ],
   },
 ];
