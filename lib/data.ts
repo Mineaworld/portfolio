@@ -87,7 +87,7 @@ export const homepageProfile: HomepageProfile = {
 };
 
 export const portfolioStats = {
-  projectsCompleted: "9",
+  projectsCompleted: "10",
   yearsOfExperience: "1-2 yrs hands-on",
   happyClients: 30,
   codingHours: 10000,
@@ -296,6 +296,27 @@ export const skillCategories = [
 ] as const;
 
 export const projects: Project[] = [
+  {
+    id: "bongmala",
+    title: "BongMala",
+    description:
+      "A QR ordering system for a malatang restaurant where customers scan a table code, build their bowl, place an order, and follow the status.",
+    image: "/projects/Inventory.png",
+    demoUrl: "",
+    repoUrl: "https://github.com/Mineaworld/BongMala",
+    techStack: [
+      "Laravel 13",
+      "React 19",
+      "TypeScript",
+      "MySQL",
+      "Tailwind CSS 4",
+      "Sanctum",
+    ],
+    problem:
+      "Restaurant ordering can get slow when staff need to take every table order by hand and update customers one by one.",
+    solution:
+      "Built a mobile-first QR flow for customers and a protected admin dashboard for staff to manage menus, tables, orders, and demo payments.",
+  },
   {
     id: "uni-assignment",
     title: "UniAssignment",
